@@ -1,0 +1,12 @@
+#PowerShell Empire detection
+rule PowerShellEmpire {
+  meta:
+    description = "Process Scanner for PowerShell Empire."
+  strings:
+    $s0 = "Invoke-Empire" ascii wide nocase
+    $s1 = "/news.php" ascii wide nocase
+    $s2 = "/admin/get.php" ascii wide nocase
+    $s3 = "/login/process.php" ascii wide nocase
+  condition:
+    1 of them
+}
